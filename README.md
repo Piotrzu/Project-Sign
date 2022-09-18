@@ -3,6 +3,7 @@
 <p>Wykonane zadanie realizuje sposób wykorzystania funkcji skrótu SHA, a następnie podpisu cyfrowego RSA.</p>
 <p>Sposób uruchomienia aplikacji (wykorzystano do tego system Linux (Ubuntu 20.04):</p>
 <ol>
+  <li>git clone https://github.com/Piotrzu/Project-Sign-Final.git</li>
   <li>sudo apt install python3-pip</li>
   <li>pip install flask</li>
   <li>sudo apt install python3-flask</li>
