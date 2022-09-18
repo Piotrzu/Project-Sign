@@ -1,21 +1,8 @@
 from cmath import log
-#from omp import Omp
 import numpy as np
 import math
 import random
 import pymp
-# @Omp.Parallel({"noThreads":8})
-# def foo():
-    # @Omp.For(range(1000))
-    # def foo2(List):
-    #     for item in List:
-    #         print(item)
-
-
-# @Omp.Parallel({"noThreads":4})
-# def generateNumbers():
-#     @Omp.For(range(10000))
-#     def generate(List):
 def generateNumbers(valuesAmount = 1000):
         #random_chaotic = random.uniform(0.3521, 0.3527)
         random_chaotic = random.uniform(0.35221, 0.35235)
