@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Digital signature created by Piotr Rycek.</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css')}}"
+    />
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <script>
+    function errorHashedMessage() {
+      alert(
+        'Firstly hash new message! \nYou can do that in "Insert new message"'
+      );
+    }
+  </script>
+  <body>
+    <a href="/"><img class="logo" src="/static/logo.png" /> </a>
+
+    <br />
+
+    {% if gen_new_values_View != True %}
+    <div style="width: 800px">
+      {% if session.get('messageSession') %}
+      <form class="main_buttons" action="enter_new_message">
+        <input
+          class="main_button"
+          type="submit"
+          value="Insert a new message 🖉"
+        />
+      </form>
+      {% endif %}
+      <form class="main_buttons" action="generate_trng" method="post">
+        <input
+          class="main_button"
+          type="submit"
+          name="generate_trng_btn"
+          value="Generate new TRNG values  ⭮	"
+        />
+      </form>
+      <form class="main_buttons" action="stats" method="post">
+        <input
+          class="main_button"
+          type="submit"
+          name="stats_btn"
+          value="Display TRNG statistics 📉"
+        />
+      </form>
+      <form class="main_buttons" action="historical">
+        <input
+          class="main_button"
+          type="submit"
+          name="stats_btn"
+          value="Show Your historical data 🗇"
+        />
+      </form>
+    </div>
+
+    {% if not session.get('messageSession') or enterNewMessage %}
+    <div class="form__group field">
+      <form action="hash_message" method="post">
+        <input
+          type="text"
+          class="form__field"
+          placeholder="Enter your message:"
+          name="message_input"
+          id="name"
+          required
+        />
+        <label for="name" class="form__label">Your message:</label>
+        <br /><br /><br />
+        <input
+          type="number"
+          class="form__field_hash"
+          placeholder="Hash size:"
+          name="hash_size_input"
+          id="hashSize"
+          list="shaSizeValues"
+          required
+        />
+        <label for="hashSize" class="form__label_hash">SHA size</label>
+        <datalist id="shaSizeValues">
+          <option value="224"></option>
+          <option value="256"></option>
+          <option value="384"></option>
+          <option value="512"></option>
+        </datalist>
+
+        <input
+          class="run_button main_button"
+          type="submit"
+          value="Hash message #"
+          id="message"
+        />
+      </form>
+    </div>
+    {% endif %} {% if session.get('messageSession') and not enterNewMessage %}
+    <br />
+    {% if hashedMessageError %}
+    <body onLoad="errorHashedMessage();"></body>
+    {% endif %}
+    <div class="received_data">
+      <h3>Received Data:</h3>
+      <hr />
+      <p class="received_data_text">
+        Last message: {{ session.get('messageSession') }}
+      </p>
+      <hr />
+      <p class="received_data_text">
+        Hashed last message: {{ session.get('hashedMessageSession') }}
+      </p>
+      <hr />
+      {% if session.get('publicRSAKeySession') %}
+      <p class="received_data_text">Public RSA Key:</p>
+      <p class="received_data_text">{{ session.get('publicRSAKeySession') }}</p>
+      {% if session.get('isSignedMessageSession') %}
+      <p class="received_data_text">
+        Last signed message: {{ session.get('signedMessage')}}
+      </p>
+      <p class="received_data_text">
+        With signature: {{ session.get('signatureHumanSession') }}
+      </p>
+      {% endif %} {% endif %}
+    </div>
+    <form action="sign_message" method="post">
+      <input
+        class="run_button main_button"
+        type="submit"
+        value="Sign last message ({{ session.get('messageSession') }})"
+        id="message"
+      />
+    </form>
+
+    {% if session.get('isSignedMessageSession') %}
+
+    <form action="check">
+      <input
+        class="run_button main_button"
+        type="submit"
+        value="Check"
+        id="message"
+      />
+    </form>
+    {% endif %} {% endif %}
+    <br />
+
+    {% endif %} {% if gen_new_values_View %}
+    <div class="form__group field">
+      <form action="new_trng_values" method="post">
+        <input
+          type="number"
+          class="form__field"
+          placeholder="How many values:"
+          name="gen_trng_input"
+          id="name"
+          required
+        />
+        <label for="name" class="form__label">How many values:</label>
+        <input
+          class="run_button main_button"
+          type="submit"
+          value="Generate new values"
+          id="message"
+        />
+      </form>
+      <a href="/">
+        <form action="/">
+          <input
+            class="run_button main_button back_button"
+            type="button"
+            value="Main page"
+          />
+        </form>
+      </a>
+    </div>
+    {% endif %}
+  </body>
+</html>

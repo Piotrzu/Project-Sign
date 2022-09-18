@@ -1,0 +1,184 @@
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  background-color: #222222;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.logo {
+  height: 45%;
+  width: 45%;
+}
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 30%;
+}
+
+.form__field,
+.form__field_hash {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder,
+.form__field_hash::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__field_hash:placeholder-shown ~ .form__label_hash {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 50%;
+}
+
+.form__label,
+.form__label_hash {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus,
+.form__label_hash:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(
+    to right,
+    rgb(88, 150, 167),
+    rgb(255, 255, 255)
+  );
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: rgb(88, 150, 167);
+  font-weight: 700;
+}
+
+.form__field_hash:focus ~ .form__label_hash {
+  position: absolute;
+  top: 40%;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: rgb(88, 150, 167);
+  font-weight: 700;
+}
+
+.form__field:required,
+.form__field:invalid,
+.form__label_hash:required,
+.form__label_hash:invalid {
+  box-shadow: none;
+}
+
+.statistics {
+  color: #9b9b9b;
+}
+
+.main_buttons {
+  display: inline-block;
+}
+.main_button {
+  background-color: rgb(88, 150, 167);
+  border: none;
+  border-radius: 12px;
+  color: whitesmoke;
+  padding: 10px;
+  height: 100px;
+  width: 18vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  white-space: normal;
+  word-wrap: break-word;
+  transition: 0.3s;
+}
+.main_button:hover {
+  cursor: pointer;
+  color: rgb(88, 150, 167);
+  background-color: whitesmoke;
+}
+
+.stats_button:hover {
+  cursor: pointer;
+  color: rgb(88, 150, 167);
+  background-color: whitesmoke;
+}
+
+.run_button {
+  background-color: white;
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  position: relative;
+  color: rgb(88, 150, 167);
+}
+
+.run_button:hover {
+  background-color: rgb(88, 150, 167);
+  color: white;
+}
+
+.back_button {
+  width: 120px;
+}
+
+.received_data_text {
+  font-size: 12px;
+}
+
+.received_data {
+  width: 90%;
+  background-color: rgb(88, 150, 167);
+  color: white;
+  text-align: center;
+  overflow-y: scroll;
+  height: 40vh;
+}
+
+.historical_data {
+  width: 70%;
+  background-color: rgb(88, 150, 167);
+  color: white;
+  text-align: center;
+  overflow-y: scroll;
+  height: 65vh;
+}
+
+.historical_data p {
+  font-size: 15px;
+}
