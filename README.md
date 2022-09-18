@@ -12,6 +12,7 @@
   <li>pip install pycryptodome</li>
   <li>pip install numpy</li>
   <li>pip install pymp</li>
+  <li>pip install pymp-pypi</li>
   <li>FLASK_ENV=production</li>
   <li>flask run</li>
 </ol>
