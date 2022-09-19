@@ -4,7 +4,6 @@ import math
 import random
 import pymp
 def generateNumbers(valuesAmount = 1000):
-        #random_chaotic = random.uniform(0.3521, 0.3527)
         random_chaotic = random.uniform(0.35221, 0.35235)
         chaotic_state = np.double(round(random_chaotic,4))
         control_parameter = np.double(4.0)
